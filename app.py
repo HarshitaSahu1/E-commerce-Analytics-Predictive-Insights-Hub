@@ -23,11 +23,11 @@ else:
     # --- NAVIGATION (Updated paths with 'dashboards' folder) ---
     
     # Define Pages (Paths updated)
-    main_dashboard = st.Page("dashboards/fulfillment_dashboard.py", title="🛒 Order Fulfillment", icon="📊", default=True)
-    customer_dashboard = st.Page("dashboards/customer.py", title="👥 Customer Analytics", icon="👥")
-    product_dashboard = st.Page("dashboards/Products.py", title="📦 Product Insights", icon="📦")
-    seller_dashboard = st.Page("dashboards/seller.py", title="🏭 Seller Performance", icon="🏭")
-    prediction_dashboard = st.Page("dashboards/ml_prediction/order_volume_dashboard.py", title="🔮 Predictions", icon="📈")
+    main_dashboard = st.Page("fulfillment_dashboard.py", title="🛒 Order Fulfillment", icon="📊", default=True)
+    customer_dashboard = st.Page("customer.py", title="👥 Customer Analytics", icon="👥")
+    product_dashboard = st.Page("Products.py", title="📦 Product Insights", icon="📦")
+    seller_dashboard = st.Page("seller.py", title="🏭 Seller Performance", icon="🏭")
+    prediction_dashboard = st.Page("order_volume_dashboard.py", title="🔮 Predictions", icon="📈")
 
     # Navigation menu
     pg = st.navigation({
