@@ -17,7 +17,7 @@ def get_data(mode,olist_orders,olist_order_items,uploaded_df,manual_df):
 def create_features(oo):
     if 'order_purchase_timestamp' in oo.columns:
         oo['order_purchase_timestamp'] = pd.to_datetime(oo['order_purchase_timestamp'])
-        summary = oo.groupby(pd.Grouper(key = 'order_purchase_timestamp',freq = 'M'))['order_id'].nunique().reset_index(name = 'Orders_Count')
+        summary = oo.groupby(pd.Grouper(key = 'order_purchase_timestamp',freq = 'ME'))['order_id'].nunique().reset_index(name = 'Orders_Count')
          #### removing incomplete months here 
         summary = summary[summary['Orders_Count']>100]
 
@@ -98,14 +98,13 @@ def order_volume_monthly_predictions(mode = "default",olist_orders = None ,olist
 if __name__ == "__main__":
 
     (
-        olist_orders,
+         olist_orders,
     olist_order_items,
     olist_customers,
     olist_payments,
     olist_reviews,
     olist_products,
     olist_sellers,
-    olist_geolocations,
     product_category_name_translations
     ) = load_raw_data()
 
