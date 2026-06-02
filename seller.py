@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime as dt
 
-from dashboards.theme import apply_custom_theme
+from theme import apply_custom_theme
 
 apply_custom_theme()
 
