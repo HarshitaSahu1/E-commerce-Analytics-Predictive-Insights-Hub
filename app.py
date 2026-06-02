@@ -1,15 +1,6 @@
 import streamlit as st
 import os
 
-st.write("---")
-st.write("DEBUG INFO - Kahan kya hai:")
-st.write("Current Folder (Working Directory):", os.getcwd())
-st.write("Files in Current Folder:", os.listdir('.'))
-
-# Agar kisi folder ke andar files hain, toh ye bhi check kar lo
-if os.path.exists('dashboards'):
-    st.write("Files in 'dashboards' folder:", os.listdir('dashboards'))
-st.write("---")
 
 # 1. Page Config (Sabse upar)
 st.set_page_config(page_title="E-Commerce Analytics Hub", layout="wide")
