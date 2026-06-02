@@ -15,6 +15,7 @@ from order_volume_predictor import order_volume_monthly_predictions
 from theme import apply_custom_theme
 
 apply_custom_theme()
+
 # ---------------------------
 # PAGE CONFIG
 # ---------------------------
@@ -33,7 +34,7 @@ mode = st.sidebar.selectbox(
 
 
 # =========================================================
-# 1️⃣ DEFAULT MODE (your ML pipeline)
+# 1️⃣ DEFAULT MODE
 # =========================================================
 if mode == "Default Prediction":
 
@@ -45,14 +46,14 @@ if mode == "Default Prediction":
 
             # Load data
             (
-                 olist_orders,
-    olist_order_items,
-    olist_customers,
-    olist_payments,
-    olist_reviews,
-    olist_products,
-    olist_sellers,
-    product_category_name_translations
+                olist_orders,
+                olist_order_items,
+                olist_customers,
+                olist_payments,
+                olist_reviews,
+                olist_products,
+                olist_sellers,
+                product_category_name_translations
             ) = load_raw_data()
 
             # Preprocessing
@@ -80,12 +81,54 @@ if mode == "Default Prediction":
 
         st.success("Done ✅")
 
-        st.subheader("📈 Results")
-        st.write(result)
+        # =========================
+        # UNPACK RESULT PROPERLY
+        # =========================
+        mape, mae, backtest_df, status, next_pred = result
+
+        # =========================
+        # METRICS
+        # =========================
+        st.subheader("📊 Model Performance")
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.metric("MAPE", f"{mape*100:.2f}%")
+
+        with col2:
+            st.metric("MAE", f"{mae:.2f}")
+
+        # =========================
+        # BACKTEST
+        # =========================
+        st.subheader("📉 Backtest Results")
+        st.dataframe(backtest_df)
+
+        st.success(f"📌 Model Status: {status}")
+
+        # =========================
+        # NEXT MONTH PREDICTION
+        # =========================
+        st.subheader("🚀 Next Month Forecast")
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.metric("Month", next_pred['month'])
+
+        with col2:
+            st.metric("Year", next_pred['year'])
+
+        with col3:
+            st.metric(
+                "Predicted Orders",
+                f"{next_pred['predicted_orders']:.0f}"
+            )
 
 
 # =========================================================
-# 2️⃣ MANUAL INPUT MODE
+# 2️⃣ MANUAL MODE
 # =========================================================
 else:
 
@@ -94,7 +137,6 @@ else:
     months_input = st.text_input("Enter Months (comma separated)", "6,7,8,9,10")
     year_input = st.text_input("Enter Year", "2014")
     orders_input = st.text_input("Enter Orders (comma separated)", "20000,30000,40000,60000,80000")
-
 
     if st.button("🚀 Predict with Manual Data"):
 
@@ -132,9 +174,52 @@ else:
                 manual_df=manual_df
             )
 
-            st.subheader("📈 Prediction Result")
-            st.write(result)
+            st.success("Prediction Completed ✅")
+
+            # =========================
+            # UNPACK RESULT
+            # =========================
+            mape, mae, backtest_df, status, next_pred = result
+
+            # =========================
+            # METRICS
+            # =========================
+            st.subheader("📊 Model Performance")
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.metric("MAPE", f"{mape*100:.2f}%")
+
+            with col2:
+                st.metric("MAE", f"{mae:.2f}")
+
+            # =========================
+            # BACKTEST
+            # =========================
+            st.subheader("📉 Backtest Results")
+            st.dataframe(backtest_df)
+
+            st.success(f"📌 Model Status: {status}")
+
+            # =========================
+            # NEXT MONTH
+            # =========================
+            st.subheader("🚀 Next Month Forecast")
+
+            col1, col2, col3 = st.columns(3)
+
+            with col1:
+                st.metric("Month", next_pred['month'])
+
+            with col2:
+                st.metric("Year", next_pred['year'])
+
+            with col3:
+                st.metric(
+                    "Predicted Orders",
+                    f"{next_pred['predicted_orders']:.0f}"
+                )
 
         except Exception as e:
             st.error(f"❌ Error: {str(e)}")
-
