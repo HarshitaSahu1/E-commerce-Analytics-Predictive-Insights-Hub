@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 
-from dashboards.theme import apply_custom_theme
+from theme import apply_custom_theme
 
 apply_custom_theme()
 
