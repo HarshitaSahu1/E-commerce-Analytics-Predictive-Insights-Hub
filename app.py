@@ -1,4 +1,7 @@
 import streamlit as st
+import os
+
+st.write("Current Directory Files:", os.listdir('.'))
 
 # 1. Page Config (Sabse upar)
 st.set_page_config(page_title="E-Commerce Analytics Hub", layout="wide")
