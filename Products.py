@@ -3,7 +3,7 @@ import pandas as pd
 
 from utils.data_loader import load_data
 
-from dashboards.theme import apply_custom_theme
+from theme import apply_custom_theme
 
 apply_custom_theme()
 
