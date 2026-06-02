@@ -24,7 +24,7 @@ Customer_table, Customer_360, Orders_table, Orders_360, product_360, olist_produ
 st.title('Customer Fulfillment Dashboard')
 
 # Aapki global theme file jo pages folder mein hai
-from dashboards.theme import apply_custom_theme
+from theme import apply_custom_theme
 apply_custom_theme()
 
 st.divider()
