@@ -1,0 +1,11 @@
+[theme]
+# 1️⃣ PRIMARY AND NAVIGATION COLORS
+primaryColor = "#1D4ED8"          # Active items, links aur hover state
+backgroundColor = "#F5F9FF"       # Pura Main background color
+secondaryBackgroundColor = "#1E3A8A" # Sidebar background color
+textColor = "#0F172A"             # Dark navy headings aur main text color
+font = "sans serif"
+
+[client]
+# Isse block layout automatic wide aur clean border spacing ke sath open hoga
+showSidebarNavigation = true
