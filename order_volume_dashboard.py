@@ -12,7 +12,7 @@ from data_loader_ml import load_raw_data
 from preprocessing import run_preprocessing
 from order_volume_predictor import order_volume_monthly_predictions
 
-from dashboards.theme import apply_custom_theme
+from theme import apply_custom_theme
 
 apply_custom_theme()
 # ---------------------------
