@@ -14,5 +14,3 @@ An end-to-end E-commerce Analytics Dashboard built to transform raw business dat
 * **Machine Learning:** Scikit-learn
 * **Deployment:** Streamlit Community Cloud
 
-## 🚀 Live Demo
-[Insert your Streamlit Cloud live link here once deployed]
