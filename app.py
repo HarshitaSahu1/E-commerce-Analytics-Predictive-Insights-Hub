@@ -16,11 +16,12 @@ if not st.session_state.logged_in:
     with col2:
         password = st.text_input("Enter Password", type="password")
         if st.button("Login"):
-            if password == "12345":
+            if password == "demo123":
                 st.session_state.logged_in = True
                 st.rerun()
             else:
                 st.error("Invalid Password!")
+        st.info("🔓 Demo Access Available | Password: demo123")
 else:
     # --- NAVIGATION (Updated paths with 'dashboards' folder) ---
     
